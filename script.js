@@ -26,7 +26,7 @@ const recetas = [
   {
     id: 3,
     nombre: 'Pollo al curry',
-    icono: '\u{1F35B}',
+    icono: '\u{1F357}',
     ingredientes: [
       { nombre: 'Bandeja contra muslos pollo', cantidad: 1 },
       { nombre: 'Lata leche coco', cantidad: 1 },
@@ -72,7 +72,7 @@ const recetas = [
   {
     id: 7,
     nombre: 'Pimientos rellenos',
-    icono: '\u{1FA51}',
+    icono: '\u{1F372}',
     ingredientes: [
       { nombre: 'Bote pimientos piquillo', cantidad: 2 },
       { nombre: 'Brick leche entera', cantidad: 1 },
@@ -131,7 +131,7 @@ const recetas = [
   {
     id: 12,
     nombre: 'Ensalada pulpo',
-    icono: '\u{1F419}',
+    icono: '\u{1F41F}',
     ingredientes: [
       { nombre: 'Pulpo cocido', cantidad: 1 },
       { nombre: 'Tomate', cantidad: 1 },
@@ -434,6 +434,10 @@ function init() {
   document.getElementById('btn-reset').addEventListener('click', resetAll);
   document.getElementById('btn-copy').addEventListener('click', copyList);
   document.getElementById('btn-back').addEventListener('click', showSelection);
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
 }
 
 document.addEventListener('DOMContentLoaded', init);
