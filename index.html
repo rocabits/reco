@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Reco - Lista de la compra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="summary-bar" id="summary-bar">0 recetas · 0 platos · 0 ingredientes totales</div>
+
+    <div class="main-content" id="main-content">
+      <div id="selection-view">
+        <div class="recipe-grid" id="recipe-grid"></div>
+      </div>
+
+      <div id="list-view" class="hidden">
+        <h2 class="list-title">🛒 Lista de la compra</h2>
+        <p class="list-stats" id="list-stats"></p>
+        <ul id="shopping-list"></ul>
+        <div class="list-actions">
+          <button class="btn btn-primary" id="btn-copy">Copiar lista</button>
+          <button class="btn btn-secondary" id="btn-back">Volver</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar" id="bottom-bar">
+      <button class="btn btn-primary btn-lg" id="btn-generate">Generar lista de la compra</button>
+      <button class="btn btn-secondary btn-lg" id="btn-reset">Reset</button>
+    </div>
+
+    <div id="toast"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
