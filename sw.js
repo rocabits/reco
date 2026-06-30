@@ -4,6 +4,7 @@ var URLS_TO_CACHE = [
   './index.html',
   './style.css',
   './script.js',
+  './config.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png'
