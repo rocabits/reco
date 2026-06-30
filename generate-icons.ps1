@@ -9,9 +9,8 @@ function New-Icon($size, $outputPath) {
   $green = [System.Drawing.Color]::FromArgb(46, 204, 113)
   $white = [System.Drawing.Color]::FromArgb(255, 255, 255)
 
-  # Solid green background
-  $bgBrush = New-Object System.Drawing.SolidBrush($green)
-  $g.FillRectangle($bgBrush, 0, 0, $size, $size)
+  # Solid green background - Clear avoids anti-aliasing artifacts
+  $g.Clear($green)
 
   $s = [double]($size) / 100.0
   $wb = New-Object System.Drawing.SolidBrush($white)
@@ -34,7 +33,7 @@ function New-Icon($size, $outputPath) {
 
   $bmp.Save($outputPath, [System.Drawing.Imaging.ImageFormat]::Png)
 
-  $wb.Dispose(); $bgBrush.Dispose()
+  $wb.Dispose()
   $g.Dispose(); $bmp.Dispose()
 }
 
