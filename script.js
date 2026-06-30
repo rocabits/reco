@@ -660,7 +660,6 @@ function showUsuarios() {
   document.getElementById('viewUsuarios').classList.add('active');
   document.getElementById('fabAdd').style.display = '';
   document.getElementById('btnBack').classList.add('visible');
-  document.getElementById('headerTitle').textContent = 'RECO: Usuarios';
   renderUsuarios();
 }
 
@@ -669,7 +668,7 @@ function hideUsuarios() {
   document.getElementById('summary-bar').classList.remove('hidden');
   document.getElementById('bottom-bar').classList.remove('hidden');
   document.getElementById('btnBack').classList.remove('visible');
-  document.getElementById('headerTitle').textContent = 'RECO';
+  updateRecipeCount();
   if (document.getElementById('list-view').classList.contains('hidden')) {
     document.getElementById('selection-view').classList.remove('hidden');
     document.getElementById('fabAdd').style.display = '';
@@ -681,6 +680,8 @@ function hideUsuarios() {
 function renderUsuarios() {
   if (!supabaseClient) return;
   supabaseClient.from('allowed_emails').select('email').eq('app_id', APP_ID).then(function (res) {
+    var total = res.data ? res.data.length : 0;
+    document.getElementById('headerTitle').textContent = 'RECO: Usuarios (' + total + ')';
     var html = '';
     if (res.data) {
       var filtered = res.data.filter(function (r) { return r.email !== currentUserEmail; });
