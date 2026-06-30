@@ -6,35 +6,35 @@ function New-Icon($size, $outputPath) {
   $g.SmoothingMode = 'HighQuality'
   $g.InterpolationMode = 'HighQualityBicubic'
 
-  $white = [System.Drawing.Color]::FromArgb(255, 255, 255)
   $green = [System.Drawing.Color]::FromArgb(46, 204, 113)
+  $white = [System.Drawing.Color]::FromArgb(255, 255, 255)
 
-  # White background
-  $bgBrush = New-Object System.Drawing.SolidBrush($white)
+  # Solid green background
+  $bgBrush = New-Object System.Drawing.SolidBrush($green)
   $g.FillRectangle($bgBrush, 0, 0, $size, $size)
 
   $s = [double]($size) / 100.0
-  $gb = New-Object System.Drawing.SolidBrush($green)
+  $wb = New-Object System.Drawing.SolidBrush($white)
 
-  # Shopping cart body (basket)
+  # Shopping cart body (basket) - white polygon
   $pts = New-Object System.Drawing.PointF[] 4
   $pts[0] = New-Object System.Drawing.PointF ([float](27*$s)), ([float](38*$s))
   $pts[1] = New-Object System.Drawing.PointF ([float](73*$s)), ([float](38*$s))
   $pts[2] = New-Object System.Drawing.PointF ([float](78*$s)), ([float](66*$s))
   $pts[3] = New-Object System.Drawing.PointF ([float](22*$s)), ([float](66*$s))
-  $g.FillPolygon($gb, $pts)
+  $g.FillPolygon($wb, $pts)
 
   # Handle
-  $g.FillRectangle($gb, [float](27*$s), [float](24*$s), [float](5*$s), [float](14*$s))
-  $g.FillRectangle($gb, [float](27*$s), [float](24*$s), [float](17*$s), [float](5*$s))
+  $g.FillRectangle($wb, [float](27*$s), [float](24*$s), [float](5*$s), [float](14*$s))
+  $g.FillRectangle($wb, [float](27*$s), [float](24*$s), [float](17*$s), [float](5*$s))
 
   # Wheels
-  $g.FillEllipse($gb, [float]((30-6)*$s), [float]((70-6)*$s), [float](12*$s), [float](12*$s))
-  $g.FillEllipse($gb, [float]((70-6)*$s), [float]((70-6)*$s), [float](12*$s), [float](12*$s))
+  $g.FillEllipse($wb, [float]((30-6)*$s), [float]((70-6)*$s), [float](12*$s), [float](12*$s))
+  $g.FillEllipse($wb, [float]((70-6)*$s), [float]((70-6)*$s), [float](12*$s), [float](12*$s))
 
   $bmp.Save($outputPath, [System.Drawing.Imaging.ImageFormat]::Png)
 
-  $gb.Dispose(); $bgBrush.Dispose()
+  $wb.Dispose(); $bgBrush.Dispose()
   $g.Dispose(); $bmp.Dispose()
 }
 
